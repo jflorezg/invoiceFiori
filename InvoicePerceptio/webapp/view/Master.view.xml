@@ -1,0 +1,21 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:semantic="sap.m.semantic" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="com.perceptio.invoiceperceptio.InvoicePerceptio.controller.Master">
+	<semantic:MasterPage id="page" title="{i18n>Master}" navButtonPress="onNavBack">
+		<semantic:content><VBox width="100%" direction="Column" id="vbox0"><items><sap.ui.layout:VerticalLayout xmlns:sap.ui.layout="sap.ui.layout" width="100%" id="layout1"><sap.ui.layout:content><sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" id="form0"><sap.ui.layout.form:formContainers><sap.ui.layout.form:FormContainer title="Parámetros" id="container4"><sap.ui.layout.form:formElements><sap.ui.layout.form:FormElement label="Mes" id="element6"><sap.ui.layout.form:fields><ComboBox xmlns="sap.m" id="box0">
+			<items>
+			    <core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Item 1 Text" id="item0"/>
+			    <core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Item 2 Text" id="item1"/>
+			    </items>
+			</ComboBox></sap.ui.layout.form:fields></sap.ui.layout.form:FormElement><sap.ui.layout.form:FormElement label="Año" id="element5"><sap.ui.layout.form:fields><ComboBox xmlns="sap.m" id="box0_1543535497236">
+			<items>
+			    <core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Item 1 Text" id="item0_1543535497236"/>
+			    <core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Item 2 Text" id="item1_1543535497236"/>
+			    </items>
+			</ComboBox></sap.ui.layout.form:fields></sap.ui.layout.form:FormElement><sap.ui.layout.form:FormElement label="Cliente" id="element7"><sap.ui.layout.form:fields><ComboBox xmlns="sap.m" id="box1">
+			<items>
+			    <core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Item 1 Text" id="item2"/>
+			    <core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Item 2 Text" id="item3"/>
+			    </items>
+			</ComboBox></sap.ui.layout.form:fields></sap.ui.layout.form:FormElement></sap.ui.layout.form:formElements></sap.ui.layout.form:FormContainer></sap.ui.layout.form:formContainers><sap.ui.layout.form:layout><sap.ui.layout.form:ResponsiveGridLayout id="layout2"/></sap.ui.layout.form:layout></sap.ui.layout.form:Form></sap.ui.layout:content></sap.ui.layout:VerticalLayout></items></VBox>
+		</semantic:content>
+	</semantic:MasterPage>
+</mvc:View>

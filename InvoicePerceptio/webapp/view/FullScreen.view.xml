@@ -1,0 +1,4 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:semantic="sap.m.semantic"
+	controllerName="com.perceptio.invoiceperceptio.InvoicePerceptio.controller.FullScreen" xmlns:html="http://www.w3.org/1999/xhtml">
+	<semantic:FullscreenPage title="{i18n>fullScreenTitle}" showNavButton="true" navButtonPress="onNavButtonPress" id="FullScreenApp"></semantic:FullscreenPage>
+</mvc:View>
