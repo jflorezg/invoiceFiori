@@ -1,0 +1,10 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:semantic="sap.m.semantic"
+	controllerName="com.perceptio.invoiceperceptio.InvoicePerceptio.controller.Detail" xmlns:html="http://www.w3.org/1999/xhtml">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
+		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+		<semantic:customHeaderContent>
+			<Button press="openFullScreenView" id="cartIcon" text="" icon="sap-icon://cart"/>
+		</semantic:customHeaderContent>
+		<semantic:content></semantic:content>
+	</semantic:DetailPage>
+</mvc:View>
