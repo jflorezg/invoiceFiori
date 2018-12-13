@@ -31,9 +31,18 @@ sap.ui.define([
 				this.getView().setModel(oCustomer, "customer");
 			});
         	*/
-			var oCustomer = new sap.ui.model.json.JSONModel("model/customer.json");
-			var oData = new sap.ui.model.json.JSONModel({customer: oCustomer});
-			this.getView().setModel(oData, "Model");
+        	var comboBox= this.getView().byId("box1");
+			var oCustomer = new sap.ui.model.json.JSONModel();
+			oCustomer.loadData("model/customer.json");
+			comboBox.setModel(oCustomer);
+			var oItemTemplate1 = new sap.ui.core.ListItem();
+
+		oItemTemplate1.bindProperty("text", "name");
+
+		comboBox.bindItems("/customers", oItemTemplate1);
+
+// Attach the ComboBox to the page
+
 		}
 
 		/**

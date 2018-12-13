@@ -1,9 +1,0 @@
-{
-  "name": "InvoicePerceptio",
-  "version": "0.0.1",
-  "description": "Aplicación de Facturación - Perceptio",
-  "private": true,
-  "devDependencies": {
-    "@sap/grunt-sapui5-bestpractice-build": "1.3.64"
-  }
-}

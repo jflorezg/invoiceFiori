@@ -1,4 +1,4 @@
-[{
+{"customers":[{
 	"self": "http://190.248.92.106:64001/rest/api/2/project/11000",
 	"id": "11000",
 	"key": "ARGA",
@@ -547,4 +547,4 @@
 		"description": "Fábrica de software",
 		"name": "Fábrica de software"
 	}
-}]
+}]}
