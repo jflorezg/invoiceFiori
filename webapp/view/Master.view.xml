@@ -2,7 +2,7 @@
 	xmlns:html="http://www.w3.org/1999/xhtml" controllerName="com.perceptio.invoiceperceptio.InvoicePerceptio.controller.Master">
 	<semantic:MasterPage id="page" title="{i18n>Facturación}" navButtonPress="onNavBack">
 		<semantic:content>
-			<Panel xmlns="sap.m" width="auto" expandable="true" expanded="false" id="panel1">
+			<Panel xmlns="sap.m" width="auto" expandable="true" expanded="true" id="panel1">
 				<headerToolbar>
 					<Toolbar id="toolbar2">
 						<Title text="Buscar"/>
@@ -40,10 +40,9 @@
 													</sap.ui.layout.form:FormElement>
 													<sap.ui.layout.form:FormElement label="Cliente" id="element7">
 														<sap.ui.layout.form:fields>
-															<ComboBox xmlns="sap.m" id="box1" width="40%" required="true" placeholder="Cliente">
+															<ComboBox xmlns="sap.m" id="box1" width="40%" required="true" placeholder="Cliente" items="{Model>/customer}">
 																<items>
-																	<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Nutresa" id="item2"/>
-																	<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Prebel" id="item3"/>
+																	<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="{customer>/name}" />
 																</items>
 															</ComboBox>
 														</sap.ui.layout.form:fields>

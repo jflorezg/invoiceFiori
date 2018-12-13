@@ -10,9 +10,31 @@ sap.ui.define([
 		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 		 * @memberOf com.perceptio.invoiceperceptio.InvoicePerceptio.view.Master
 		 */
-		//	onInit: function() {
-		//
-		//	},
+		onInit: function() {
+			var urlCustomerJira = "https://190.248.92.106:443/rest/api/2/project";
+			/*
+			$.ajax({
+				type: "GET",
+				url : urlCustomerJira,
+				dataType: "json",
+				success: function(data,textStatus,jqXHR) {
+					//console.log(data);
+					var oCustomer = new sap.ui.model.json.JSONModel("model/customer.json");
+					this.getView().setModel(oCustomer, "customer");
+        		}
+        	});
+			var oModel = new sap.ui.model.json.JSONModel();
+			oModel.loadData(urlCustomerJira, false, "GET");
+			oModel.attachRequestSent(function(){
+				console.log("hola");
+				var oCustomer = new sap.ui.model.json.JSONModel("model/customer.json");
+				this.getView().setModel(oCustomer, "customer");
+			});
+        	*/
+			var oCustomer = new sap.ui.model.json.JSONModel("model/customer.json");
+			var oData = new sap.ui.model.json.JSONModel({customer: oCustomer});
+			this.getView().setModel(oData, "Model");
+		}
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
