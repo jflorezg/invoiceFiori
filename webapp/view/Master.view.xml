@@ -1,13 +1,12 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:semantic="sap.m.semantic"
 	xmlns:html="http://www.w3.org/1999/xhtml" controllerName="com.perceptio.invoiceperceptio.InvoicePerceptio.controller.Master">
-	<semantic:MasterPage id="page" title="{i18n>Master}" navButtonPress="onNavBack">
+	<semantic:MasterPage id="page" title="{i18n>Facturación}" navButtonPress="onNavBack">
 		<semantic:content>
-			<Panel xmlns="sap.m" width="auto" expandable="true" expanded="true" id="panel1">
+			<Panel xmlns="sap.m" width="auto" expandable="true" expanded="false" id="panel1">
 				<headerToolbar>
 					<Toolbar id="toolbar2">
-						<Title text="Header"/>
+						<Title text="Buscar"/>
 						<ToolbarSpacer/>
-						<Button icon="sap-icon://settings"/>
 					</Toolbar>
 				</headerToolbar>
 				<content>
@@ -23,28 +22,28 @@
 														<sap.ui.layout.form:fields>
 															<ComboBox xmlns="sap.m" id="box0" width="30%" required="true" placeholder="Mes">
 																<items>
-																	<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Item 1 Text" id="item0"/>
-																	<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Item 2 Text" id="item1"/>
+																	<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Enero" id="item0"/>
+																	<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Diciembre" id="item1"/>
 																</items>
 															</ComboBox>
 														</sap.ui.layout.form:fields>
 													</sap.ui.layout.form:FormElement>
 													<sap.ui.layout.form:FormElement label="Año" id="element5">
 														<sap.ui.layout.form:fields>
-															<ComboBox xmlns="sap.m" id="box0_1543535497236" width="30%">
+															<ComboBox xmlns="sap.m" id="box0_1543535497236" width="30%" required="true" placeholder="Año">
 																<items>
-																	<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Item 1 Text" id="item0_1543535497236"/>
-																	<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Item 2 Text" id="item1_1543535497236"/>
+																	<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="2017" id="item0_1543535497236"/>
+																	<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="2018" id="item1_1543535497236"/>
 																</items>
 															</ComboBox>
 														</sap.ui.layout.form:fields>
 													</sap.ui.layout.form:FormElement>
 													<sap.ui.layout.form:FormElement label="Cliente" id="element7">
 														<sap.ui.layout.form:fields>
-															<ComboBox xmlns="sap.m" id="box1" width="30%">
+															<ComboBox xmlns="sap.m" id="box1" width="40%" required="true" placeholder="Cliente">
 																<items>
-																	<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Item 1 Text" id="item2"/>
-																	<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Item 2 Text" id="item3"/>
+																	<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Nutresa" id="item2"/>
+																	<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Prebel" id="item3"/>
 																</items>
 															</ComboBox>
 														</sap.ui.layout.form:fields>
@@ -62,7 +61,7 @@
 			</Panel>
 			<Panel>
 				<content>
-					<List headerText="Products">
+					<List headerText="Requerimientos">
 						<items>
 							<ObjectListItem title="trin1" type="Active" press="onListItemPress"
 								number="{ parts:[{path:'Price'},{path:'CurrencyCode'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"
