@@ -1,10 +1,112 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:semantic="sap.m.semantic"
-	controllerName="com.perceptio.invoiceperceptio.InvoicePerceptio.controller.Detail" xmlns:html="http://www.w3.org/1999/xhtml">
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:semantic="sap.m.semantic" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" controllerName="com.perceptio.invoiceperceptio.InvoicePerceptio.controller.Detail"
+	xmlns:html="http://www.w3.org/1999/xhtml">
 	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
 		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
 		<semantic:customHeaderContent>
 			<Button press="openFullScreenView" id="cartIcon" text="" icon="sap-icon://cart"/>
 		</semantic:customHeaderContent>
-		<semantic:content></semantic:content>
+		<semantic:content>
+			<Panel>
+				<headerToolbar>
+					<Toolbar id="toolbar2">
+						<Title text="Header"/>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://settings"/>
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<VBox class="sapUiSmallMargin">
+						<f:SimpleForm id="SimpleFormToolbar" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
+							labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
+							singleContainerFullSize="false" ariaLabelledBy="Title1">
+							<f:content>
+								<Label text="ZIP Code/City"/>
+								<Input value="{ZIPCode}">
+									<layoutData>
+										<l:GridData span="XL2 L1 M3 S4"/>
+									</layoutData>
+								</Input>
+								<Input value="{City}"/>
+								<Label text="Country"/>
+								<Select id="country" selectedKey="{Country}">
+									<items>
+										<core:Item text="England" key="England"/>
+										<core:Item text="Germany" key="Germany"/>
+										<core:Item text="USA" key="USA"/>
+									</items>
+								</Select>
+								
+							</f:content>
+						</f:SimpleForm>
+					</VBox>
+				</content>
+			</Panel>
+			<Panel>
+				<content>
+					<Table id="idProductsTable" inset="false" items="{ path: '/ProductCollection', sorter: { path: 'Name' } }">
+						<headerToolbar>
+							<Toolbar>
+								<content>
+									<Title text="Products" level="H2"/>
+									<ToolbarSpacer/>
+									<ComboBox id="idPopinLayout" placeholder="Popin layout options" change="onPopinLayoutChanged">
+										<items>
+											<core:Item text="Block" key="Block"/>
+											<core:Item text="Grid Large" key="GridLarge"/>
+											<core:Item text="Grid Small" key="GridSmall"/>
+										</items>
+									</ComboBox>
+									<MultiComboBox id="idSticky" placeholder="Sticky options" selectionFinish="onSelectionFinish" width="15%">
+										<items>
+											<core:Item text="Column headers" key="ColumnHeaders"/>
+											<core:Item text="Header Toolbar" key="HeaderToolbar"/>
+											<core:Item text="Info Toolbar" key="InfoToolbar"/>
+										</items>
+									</MultiComboBox>
+									<ToggleButton id="toggleInfoToolbar" text="Hide/Show InfoToolbar" press="onToggleInfoToolbar"/>
+								</content>
+							</Toolbar>
+						</headerToolbar>
+						<infoToolbar>
+							<Toolbar active="ture">
+								<Label text="Wide range of available products"/>
+							</Toolbar>
+						</infoToolbar>
+						<columns>
+							<Column width="12em">
+								<Text text="Product"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Supplier"/>
+							</Column>
+							<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
+								<Text text="Dimensions"/>
+							</Column>
+							<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+								<Text text="Weight"/>
+							</Column>
+							<Column hAlign="End">
+								<Text text="Price"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<ObjectIdentifier title="{Name}" text="{ProductId}"/>
+									<Text text="{SupplierName}"/>
+									<Text text="{Width} x {Depth} x {Height} {DimUnit}"/>
+									<ObjectNumber number="{WeightMeasure}" unit="{WeightUnit}"
+										state="{ parts: [ {path: 'WeightMeasure'}, {path: 'WeightUnit'} ], formatter: 'sap.m.sample.Table.Formatter.weightState' }"/>
+									<ObjectNumber
+										number="{ parts:[{path:'Price'},{path:'CurrencyCode'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"
+										unit="{CurrencyCode}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</Panel>
+		</semantic:content>
 	</semantic:DetailPage>
 </mvc:View>
