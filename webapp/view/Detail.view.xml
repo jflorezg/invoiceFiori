@@ -1,18 +1,17 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:semantic="sap.m.semantic" xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form" controllerName="com.perceptio.invoiceperceptio.InvoicePerceptio.controller.Detail"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
+	<semantic:DetailPage id="page" navButtonPress="onNavBack"
 		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
-		<semantic:customHeaderContent>
-			<Button press="openFullScreenView" id="cartIcon" text="" icon="sap-icon://cart"/>
-		</semantic:customHeaderContent>
 		<semantic:content>
 			<Panel>
 				<headerToolbar>
 					<Toolbar id="toolbar2">
-						<Title text="Header"/>
+						<Title text="Tarifa Cliente"/>
 						<ToolbarSpacer/>
-						<Button icon="sap-icon://settings"/>
+						<Button icon="sap-icon://save"/>
+						<Button icon="sap-icon://write-new-document"/>
+						<Button icon="sap-icon://add-document"/>
 					</Toolbar>
 				</headerToolbar>
 				<content>
@@ -21,22 +20,28 @@
 							labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
 							singleContainerFullSize="false" ariaLabelledBy="Title1">
 							<f:content>
-								<Label text="ZIP Code/City"/>
-								<Input value="{ZIPCode}">
-									<layoutData>
-										<l:GridData span="XL2 L1 M3 S4"/>
-									</layoutData>
-								</Input>
-								<Input value="{City}"/>
-								<Label text="Country"/>
-								<Select id="country" selectedKey="{Country}">
+								<Label text="Tarifa/Num Horas"/>								
+								<Select id="Tarifa" selectedKey="{Tarifa}" width="45%" autoAdjustWidth= "true" >
 									<items>
-										<core:Item text="England" key="England"/>
-										<core:Item text="Germany" key="Germany"/>
-										<core:Item text="USA" key="USA"/>
+										<core:Item text="Nutresa_abap_JR"  key="Nutresa_abJR"/>
+										<core:Item text="Nutresa_abap_SMS" key="Nutresa_abSMS"/>
+										<core:Item text="Prebel_abap_JR"   key="Prebel_abJR"/>
 									</items>
 								</Select>
-								
+								<Input value="{Numhoras}" editable="true"  placeholder="Numero de horas"/>
+								<Label text="Especialidad/Por definir"/>
+								<Select id="Especialidad" selectedKey="{Especialidad}">
+									<items>
+										<core:Item text="Abap"  key="ABAP"/>
+										<core:Item text="Fiori" key="FIORI"/>
+										<core:Item text="BW"    key="BW"/>
+										<core:Item text="BO"    key="BO"/>										
+									</items>
+								</Select>								
+								<Input value="{porfinir}" placeholder="por definir"/>
+								<Label text="Descripción/Tarifa"/>
+								<Input value="{Descripcion}" editable="true"  placeholder="Debes poner tu descripción aquí"/>
+								<Input value="{Tarifa}" editable="true"  placeholder="$"/>
 							</f:content>
 						</f:SimpleForm>
 					</VBox>
@@ -46,48 +51,25 @@
 				<content>
 					<Table id="idProductsTable" inset="false" items="{ path: '/ProductCollection', sorter: { path: 'Name' } }">
 						<headerToolbar>
-							<Toolbar>
-								<content>
-									<Title text="Products" level="H2"/>
-									<ToolbarSpacer/>
-									<ComboBox id="idPopinLayout" placeholder="Popin layout options" change="onPopinLayoutChanged">
-										<items>
-											<core:Item text="Block" key="Block"/>
-											<core:Item text="Grid Large" key="GridLarge"/>
-											<core:Item text="Grid Small" key="GridSmall"/>
-										</items>
-									</ComboBox>
-									<MultiComboBox id="idSticky" placeholder="Sticky options" selectionFinish="onSelectionFinish" width="15%">
-										<items>
-											<core:Item text="Column headers" key="ColumnHeaders"/>
-											<core:Item text="Header Toolbar" key="HeaderToolbar"/>
-											<core:Item text="Info Toolbar" key="InfoToolbar"/>
-										</items>
-									</MultiComboBox>
-									<ToggleButton id="toggleInfoToolbar" text="Hide/Show InfoToolbar" press="onToggleInfoToolbar"/>
-								</content>
-							</Toolbar>
 						</headerToolbar>
-						<infoToolbar>
-							<Toolbar active="ture">
-								<Label text="Wide range of available products"/>
-							</Toolbar>
-						</infoToolbar>
 						<columns>
 							<Column width="12em">
-								<Text text="Product"/>
+								<Text text="Requerimientos"/>
 							</Column>
-							<Column minScreenWidth="Tablet" demandPopin="true">
-								<Text text="Supplier"/>
+							<Column minScreenWidth="Desktop" demandPopin="true">
+								<Text text="Cliente"/>
 							</Column>
-							<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
-								<Text text="Dimensions"/>
+							<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Begin">
+								<Text text="Horas"/>
 							</Column>
-							<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
-								<Text text="Weight"/>
+							<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Begin">
+								<Text text="Tarifa"/>
 							</Column>
-							<Column hAlign="End">
-								<Text text="Price"/>
+							<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Begin">
+								<Text text="Especialidad"/>
+							</Column>							
+							<Column  minScreenWidth="Desktop" demandPopin="true" hAlign="End">
+								<Text text="Presio/H*T"/>
 							</Column>
 						</columns>
 						<items>
