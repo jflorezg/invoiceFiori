@@ -49,7 +49,7 @@
 			</Panel>
 			<Panel>
 				<content>
-					<Table id="idProductsTable" inset="false" items="{ path: '/ProductCollection', sorter: { path: 'Name' } }">
+					<Table id="Tabla_invoice" inset="false" items="{ path: '/ProductCollection', sorter: { path: 'Name' } }">
 						<headerToolbar>
 						</headerToolbar>
 						<columns>

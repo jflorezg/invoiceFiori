@@ -10,41 +10,44 @@ sap.ui.define([
 		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 		 * @memberOf com.perceptio.invoiceperceptio.InvoicePerceptio.view.Master
 		 */
-		onInit: function() {
-			var urlCustomerJira = "https://190.248.92.106:443/rest/api/2/project";
-			/*
+		onInit: function () {
+			var urlCustomerJira = "";
+			urlCustomerJira = "https://190.248.92.106:64001/rest/api/2/search?jql=project=10807&startAt=0&maxResults=10&fields=issuetype,summary,status,created,timespent,aggregatetimespent,timeoriginalestimate,customfield_11002";
+			urlCustomerJira = "https://190.248.92.106:64001/rest/api/2/project";
+
+			var oItemTemplate = new sap.ui.core.ListItem();
+			oItemTemplate.bindProperty("text", "name");
+			comboBox.bindItems("/customers", oItemTemplate);
+
+			var comboBox = this.getView().byId("box1");
+		
+
 			$.ajax({
 				type: "GET",
 				url : urlCustomerJira,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    "Authorization": "Basic " + btoa("jovanny.castro" + ":" + "Jova1017219182")
+                },
 				dataType: "json",
 				success: function(data,textStatus,jqXHR) {
-					//console.log(data);
-					var oCustomer = new sap.ui.model.json.JSONModel("model/customer.json");
-					this.getView().setModel(oCustomer, "customer");
+					comboBox.setModel(new sap.ui.model.json.JSONModel({"customers": data}));
         		}
         	});
-			var oModel = new sap.ui.model.json.JSONModel();
-			oModel.loadData(urlCustomerJira, false, "GET");
-			oModel.attachRequestSent(function(){
-				console.log("hola");
-				var oCustomer = new sap.ui.model.json.JSONModel("model/customer.json");
-				this.getView().setModel(oCustomer, "customer");
-			});
-        	*/
-        	var comboBox= this.getView().byId("box1");
-			var oCustomer = new sap.ui.model.json.JSONModel();
-			oCustomer.loadData("model/customer.json");
-			comboBox.setModel(oCustomer);
-			var oItemTemplate1 = new sap.ui.core.ListItem();
-
-		oItemTemplate1.bindProperty("text", "name");
-
-		comboBox.bindItems("/customers", oItemTemplate1);
-
-// Attach the ComboBox to the page
-
-		}
-
+		},
+			
+		onChangeCustomer: function(oEvent){
+/*			
+			var customerItem = oEvent.getSource();
+			var tb1 = this.getView().byId("year");
+*/	
+			var table_invoice = this.getView().byId("Table_invoice");
+			var oitems = table_invoice.getItems();
+			if (oitems.length == 1) {
+			 alert("Error no se encuentran datos");
+			}
+		},
+		
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 		 * (NOT before the first rendering! onInit() is used for that one!).

@@ -20,7 +20,7 @@
 												<sap.ui.layout.form:formElements>
 													<sap.ui.layout.form:FormElement label="Mes" id="element6">
 														<sap.ui.layout.form:fields>
-															<ComboBox xmlns="sap.m" id="box0" width="30%" required="true" placeholder="Mes">
+															<ComboBox xmlns="sap.m" id="month" width="30%" required="true" placeholder="Mes">
 																<items>
 																	<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Enero" id="item0"/>
 																	<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Diciembre" id="item1"/>
@@ -30,7 +30,7 @@
 													</sap.ui.layout.form:FormElement>
 													<sap.ui.layout.form:FormElement label="Año" id="element5">
 														<sap.ui.layout.form:fields>
-															<ComboBox xmlns="sap.m" id="box0_1543535497236" width="30%" required="true" placeholder="Año">
+															<ComboBox xmlns="sap.m" id="year" width="30%" required="true" placeholder="Año">
 																<items>
 																	<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="2017" id="item0_1543535497236"/>
 																	<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="2018" id="item1_1543535497236"/>
@@ -40,8 +40,13 @@
 													</sap.ui.layout.form:FormElement>
 													<sap.ui.layout.form:FormElement label="Cliente" id="element7">
 														<sap.ui.layout.form:fields>
-															<ComboBox xmlns="sap.m" id="box1" width="40%" required="true" placeholder="Cliente">
-									
+															<ComboBox
+																xmlns="sap.m"
+																id="box1"
+																width="40%"
+																required="true"
+																placeholder="Cliente"
+																change="onChangeCustomer">
 															</ComboBox>
 														</sap.ui.layout.form:fields>
 													</sap.ui.layout.form:FormElement>
