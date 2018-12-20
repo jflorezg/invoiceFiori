@@ -2,7 +2,7 @@ sap.ui.define([
 	"com/perceptio/invoiceperceptio/InvoicePerceptio/controller/BaseController"
 ], function (Controller) {
 	"use strict";
-
+		
 	return Controller.extend("com.perceptio.invoiceperceptio.InvoicePerceptio.controller.Master", {
 
 		/**
@@ -35,8 +35,12 @@ sap.ui.define([
 		},
 		
 		onPressRequirement: function(oEvent){
+		 var selectedObject	= oEvent.getSource().getModel().oData.issues.filter((item) => {
+						return item.id == oEvent.getSource().getNumber();
+					});
 			this.getRouter().navTo("detail", {
-				requirement: oEvent.getSource().getNumber()
+				requirement: oEvent.getSource().getNumber(),
+				requirementObj : selectedObject
 			});
 		},
 
