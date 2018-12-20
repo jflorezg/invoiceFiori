@@ -82,6 +82,13 @@
 					"master"
 				]
 			}, {
+				"pattern": "detail/{requirement}",
+				"name": "detail",
+				"target": [
+					"master",
+					"object"
+				]
+			}, {
 				"pattern": "item/{objectPath}",
 				"name": "object",
 				"target": [
@@ -93,12 +100,6 @@
 				"pattern": "fullscreen",
 				"target": [
 					"fullscreen"
-				]
-			}, {
-				"name": "detail",
-				"pattern": "detail",
-				"target": [
-					"object"
 				]
 			}],
 			"targets": {

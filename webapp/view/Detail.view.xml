@@ -16,29 +16,25 @@
 				</headerToolbar>
 				<content>
 					<VBox class="sapUiSmallMargin">
-						<Label text="ID:" />
 						<f:SimpleForm id="SimpleFormToolbar" editable="true" layout="ResponsiveGridLayout" labelSpanXL="12" labelSpanL="3" labelSpanM="12"
 							labelSpanS="8" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="8" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
 							singleContainerFullSize="false" ariaLabelledBy="Title1">
 							<f:content>
-								<Label text="Tarifa/Num Horas"/>							
-								<Select id="Tarifa" selectedKey="{Tarifa}" width="45%" autoAdjustWidth= "true" >
-									<items>
-										<core:Item text="Nutresa_abap_JR"  key="Nutresa_abJR"/>
-										<core:Item text="Nutresa_abap_SMS" key="Nutresa_abSMS"/>
-										<core:Item text="Prebel_abap_JR"   key="Prebel_abJR"/>
-									</items>
-								</Select>
+								<Label text="Tarifa/Num Horas"/>
+								<ComboBox
+									xmlns="sap.m"
+									id="rateCb"
+									width="45%"
+									placeholder="Tarifa">
+								</ComboBox>
 								<Input value="{Numhoras}" editable="true"  placeholder="Numero de horas"/>
 								<Label text="Especialidad"/>
-								<Select id="Especialidad" selectedKey="{Especialidad}" width="45%">
-									<items>
-										<core:Item text="Abap"  key="ABAP"/>
-										<core:Item text="Fiori" key="FIORI"/>
-										<core:Item text="BW"    key="BW"/>
-										<core:Item text="BO"    key="BO"/>										
-									</items>
-								</Select>
+								<ComboBox
+									xmlns="sap.m"
+									id="serviceCb"
+									width="45%"
+									placeholder="Especialidad">
+								</ComboBox>
 								<Label text="Descripción/Tarifa"/>
 								<Input value="{Descripcion}" editable="true"  placeholder="Debes poner tu descripción aquí"/>
 								<Input value="{Tarifa}" editable="true"  placeholder="$"/>

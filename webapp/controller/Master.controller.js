@@ -11,9 +11,7 @@ sap.ui.define([
 		 * @memberOf com.perceptio.invoiceperceptio.InvoicePerceptio.view.Master
 		 */
 		onInit: function () {
-			var urlCustomerJira = "";
-			urlCustomerJira = "https://190.248.92.106:64001/rest/api/2/search?jql=project=10807&startAt=0&maxResults=10&fields=issuetype,summary,status,created,timespent,aggregatetimespent,timeoriginalestimate,customfield_11002";
-			urlCustomerJira = "https://190.248.92.106:64001/rest/api/2/project";
+			var urlCustomers = "https://190.248.92.106:64001/rest/api/2/project";
 
 			var oItemTemplate = new sap.ui.core.ListItem();
 			oItemTemplate.bindProperty("text", "name");
@@ -21,11 +19,10 @@ sap.ui.define([
 
 			var comboBox = this.getView().byId("box1");
 			comboBox.bindItems("/customers", oItemTemplate);
-		
 
 			$.ajax({
 				type: "GET",
-				url : urlCustomerJira,
+				url : urlCustomers,
                 headers: {
                     'Access-Control-Allow-Origin': '*',
                     "Authorization": "Basic " + btoa("jovanny.castro" + ":" + "Jova1017219182")
@@ -38,15 +35,9 @@ sap.ui.define([
 		},
 		
 		onPressRequirement: function(oEvent){
-			var requirementItem = oEvent.getSource();
-
-			var context = {
-				requirement: requirementItem.getNumber(),
-				objectPath: 'asdf',
-				bindingContext: oEvent.getSource().getBindingContext()
-			};
-			this.getRouter().navTo("detail", context);
-			//sap.ui.core.UIComponent.getRouterFor(this).navTo("Detail", context);
+			this.getRouter().navTo("detail", {
+				requirement: oEvent.getSource().getNumber()
+			});
 		},
 
 		onChangeCustomer: function(oEvent){
