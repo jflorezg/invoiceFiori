@@ -17,9 +17,10 @@ sap.ui.define([
 
 			var oItemTemplate = new sap.ui.core.ListItem();
 			oItemTemplate.bindProperty("text", "name");
-			comboBox.bindItems("/customers", oItemTemplate);
+			oItemTemplate.bindProperty("key", "id");
 
 			var comboBox = this.getView().byId("box1");
+			comboBox.bindItems("/customers", oItemTemplate);
 		
 
 			$.ajax({
@@ -35,17 +36,50 @@ sap.ui.define([
         		}
         	});
 		},
-			
+		
+		onPressRequirement: function(oEvent){
+			var requirementItem = oEvent.getSource();
+
+			var context = {
+				requirement: requirementItem.getNumber(),
+				objectPath: 'asdf',
+				bindingContext: oEvent.getSource().getBindingContext()
+			};
+			this.getRouter().navTo("detail", context);
+			//sap.ui.core.UIComponent.getRouterFor(this).navTo("Detail", context);
+		},
+
 		onChangeCustomer: function(oEvent){
-/*			
 			var customerItem = oEvent.getSource();
-			var tb1 = this.getView().byId("year");
-*/	
-			var table_invoice = this.getView().byId("Table_invoice");
-			var oitems = table_invoice.getItems();
-			if (oitems.length == 1) {
-			 alert("Error no se encuentran datos");
-			}
+
+			var oItemTemplate = new sap.m.ObjectListItem({
+				title: "{key}",
+				type: "Active",
+				press: [this.onPressRequirement, this]
+			});
+			oItemTemplate.bindProperty("number", "id");
+
+			var listReq = this.getView().byId("list_requirement");
+			listReq.bindItems("/issues", oItemTemplate);
+
+			var urlRequirementJira = `
+				https://190.248.92.106:64001/rest/api/2/search?jql=project=` + customerItem.getSelectedKey() + `
+					&startAt=0
+					&maxResults=10
+					&fields=issuetype,summary,status,created,timespent,aggregatetimespent,timeoriginalestimate,customfield_11002
+			`;
+			$.ajax({
+				type: "GET",
+				url : urlRequirementJira,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    "Authorization": "Basic " + btoa("jovanny.castro" + ":" + "Jova1017219182")
+                },
+				dataType: "json",
+				success: function(data,textStatus,jqXHR) {
+					listReq.setModel(new sap.ui.model.json.JSONModel(data));
+        		}
+        	});
 		},
 		
 		/**

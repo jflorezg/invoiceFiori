@@ -12,9 +12,17 @@ sap.ui.define([
 		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 		 * @memberOf com.perceptio.invoiceperceptio.InvoicePerceptio.view.Detail
 		 */
-		//	onInit: function() {
-		//
-		//	},
+		onInit: function() {
+			//var oRouter = sap.ui.core.routing.Router.getRouter("idSplitAppControl");
+			var oRouter = this.getRouter();
+			oRouter.attachRouteMatched(function (oEvent) {
+				/*if (oEvent.getParameter("name") !== "detail") {
+					return;
+				}
+				var requirement = oEvent.getParameter("arguments").requirement;*/
+				console.log(requirement);
+			}, this);
+		},
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

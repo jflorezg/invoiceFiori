@@ -1,0 +1,17 @@
+{ "rate":
+	[{
+		"id": "tar_001",
+		"name": "Argos_abap_JR",
+		"customer": "11000",
+		"service": "esp_001",
+		"hours": "9",
+		"charge": "55000"
+	},{
+		"id": "tar_001",
+		"name": "Argos_abap_SR",
+		"customer": "11000",
+		"service": "esp_001",
+		"hours": "9",
+		"charge": "150000"
+	}]
+}

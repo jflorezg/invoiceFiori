@@ -94,6 +94,12 @@
 				"target": [
 					"fullscreen"
 				]
+			}, {
+				"name": "detail",
+				"pattern": "detail",
+				"target": [
+					"object"
+				]
 			}],
 			"targets": {
 				"master": {

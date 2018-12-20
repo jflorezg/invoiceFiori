@@ -1,0 +1,15 @@
+{ "service":
+	[{
+		"id": "esp_001",
+		"name": "ABAP"
+	}, {
+		"id": "esp_002",
+		"name": "Fiori"
+	}, {
+		"id": "esp_003",
+		"name": "BW"
+	}, {
+		"id": "esp_004",
+		"name": "BO"
+	}]
+}
