@@ -35,9 +35,10 @@ sap.ui.define([
 		},
 		
 		onPressRequirement: function(oEvent){
-		 var selectedObject	= oEvent.getSource().getModel().oData.issues.filter((item) => {
-						return item.id == oEvent.getSource().getNumber();
-					});
+			 var selectedObject	= oEvent.getSource().getModel().oData.issues.filter((item) => {
+				return item.id == oEvent.getSource().getNumber();
+			});
+			console.log(selectedObject);
 			this.getRouter().navTo("detail", {
 				requirement: oEvent.getSource().getNumber(),
 				requirementObj : selectedObject

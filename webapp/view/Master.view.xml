@@ -12,48 +12,75 @@
 				<content>
 					<VBox width="100%" direction="Column" id="vbox0">
 						<items>
-							<sap.ui.layout:VerticalLayout xmlns:sap.ui.layout="sap.ui.layout" width="100%" id="layout1">
+							<VBox width="100%" direction="Row" id="vbox0_1">
+								<items>
+									<sap.ui.layout:VerticalLayout xmlns:sap.ui.layout="sap.ui.layout" width="100%" id="layout1">
+										<sap.ui.layout:content>
+											<sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" id="form0">
+												<sap.ui.layout.form:formContainers>
+													<sap.ui.layout.form:FormContainer title="Parámetros" id="container4">
+														<sap.ui.layout.form:formElements>
+															<sap.ui.layout.form:FormElement label="Mes" id="element6">
+																<sap.ui.layout.form:fields>
+																	<ComboBox xmlns="sap.m" id="month" width="50%" required="true" placeholder="Mes">
+																		<items>
+																			<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Enero" id="item0"/>
+																			<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Diciembre" id="item1"/>
+																		</items>
+																	</ComboBox>
+																</sap.ui.layout.form:fields>
+															</sap.ui.layout.form:FormElement>
+														</sap.ui.layout.form:formElements>
+													</sap.ui.layout.form:FormContainer>
+												</sap.ui.layout.form:formContainers>
+												<sap.ui.layout.form:layout><sap.ui.layout.form:ResponsiveGridLayout id="layout2"/></sap.ui.layout.form:layout>
+											</sap.ui.layout.form:Form>
+										</sap.ui.layout:content>
+									</sap.ui.layout:VerticalLayout>
+								</items>
+								<items>
+									<sap.ui.layout:VerticalLayout xmlns:sap.ui.layout="sap.ui.layout" width="100%" id="layout1_1">
+										<sap.ui.layout:content>
+											<sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" id="form0_1">
+												<sap.ui.layout.form:formContainers>
+													<sap.ui.layout.form:FormContainer title=" " id="container4_1">
+														<sap.ui.layout.form:formElements>
+															<sap.ui.layout.form:FormElement label="Año" id="element5_1">
+																<sap.ui.layout.form:fields>
+																	<ComboBox xmlns="sap.m" id="year" width="30%" required="true" placeholder="Año">
+																		<items>
+																			<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="2017" id="item0_1543535497236_1"/>
+																			<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="2018" id="item1_1543535497236_1"/>
+																		</items>
+																	</ComboBox>
+																</sap.ui.layout.form:fields>
+															</sap.ui.layout.form:FormElement>
+														</sap.ui.layout.form:formElements>
+													</sap.ui.layout.form:FormContainer>
+												</sap.ui.layout.form:formContainers>
+												<sap.ui.layout.form:layout><sap.ui.layout.form:ResponsiveGridLayout id="layout2_1"/></sap.ui.layout.form:layout>
+											</sap.ui.layout.form:Form>
+										</sap.ui.layout:content>
+									</sap.ui.layout:VerticalLayout>
+								</items>
+							</VBox>
+						</items>
+						<items>
+							<sap.ui.layout:VerticalLayout xmlns:sap.ui.layout="sap.ui.layout" width="100%" id="layout1_2">
 								<sap.ui.layout:content>
-									<sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" id="form0">
+									<sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" id="form0_2">
 										<sap.ui.layout.form:formContainers>
-											<sap.ui.layout.form:FormContainer title="Parámetros" id="container4">
+											<sap.ui.layout.form:FormContainer title="" id="container4_2">
 												<sap.ui.layout.form:formElements>
-													<sap.ui.layout.form:FormElement label="Mes" id="element6">
-														<sap.ui.layout.form:fields>
-															<ComboBox xmlns="sap.m" id="month" width="30%" required="true" placeholder="Mes">
-																<items>
-																	<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Enero" id="item0"/>
-																	<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Diciembre" id="item1"/>
-																</items>
-															</ComboBox>
-														</sap.ui.layout.form:fields>
-													</sap.ui.layout.form:FormElement>
-													<sap.ui.layout.form:FormElement label="Año" id="element5">
-														<sap.ui.layout.form:fields>
-															<ComboBox xmlns="sap.m" id="year" width="30%" required="true" placeholder="Año">
-																<items>
-																	<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="2017" id="item0_1543535497236"/>
-																	<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="2018" id="item1_1543535497236"/>
-																</items>
-															</ComboBox>
-														</sap.ui.layout.form:fields>
-													</sap.ui.layout.form:FormElement>
 													<sap.ui.layout.form:FormElement label="Cliente" id="element7">
 														<sap.ui.layout.form:fields>
-															<ComboBox
-																xmlns="sap.m"
-																id="box1"
-																width="40%"
-																required="true"
-																placeholder="Cliente"
-																change="onChangeCustomer">
-															</ComboBox>
+															<ComboBox xmlns="sap.m" id="box1" required="true" placeholder="Cliente" change="onChangeCustomer"></ComboBox>
 														</sap.ui.layout.form:fields>
 													</sap.ui.layout.form:FormElement>
 												</sap.ui.layout.form:formElements>
 											</sap.ui.layout.form:FormContainer>
 										</sap.ui.layout.form:formContainers>
-										<sap.ui.layout.form:layout><sap.ui.layout.form:ResponsiveGridLayout id="layout2"/></sap.ui.layout.form:layout>
+										<sap.ui.layout.form:layout><sap.ui.layout.form:ResponsiveGridLayout id="layout2_2"/></sap.ui.layout.form:layout>
 									</sap.ui.layout.form:Form>
 								</sap.ui.layout:content>
 							</sap.ui.layout:VerticalLayout>
@@ -63,8 +90,7 @@
 			</Panel>
 			<Panel>
 				<content>
-					<List id="list_requirement" headerText="Requerimientos">
-					</List>
+					<List id="list_requirement" headerText="Requerimientos"></List>
 				</content>
 			</Panel>
 		</semantic:content>

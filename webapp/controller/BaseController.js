@@ -61,8 +61,6 @@ sap.ui.define([
 					this.getRouter().navTo("master", {}, true);
 				}
 			}
-
 		});
-
 	}
 );

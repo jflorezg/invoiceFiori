@@ -15,6 +15,7 @@ sap.ui.define([
 		onInit: function() {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this); //Get Hold of Router
 			oRouter.getRoute("detail").attachPatternMatched(function(oEvent){
+				console.log(oEvent.getParameter("arguments").requirementObj)
 				this.loadModels(oEvent.getParameter("arguments").requirement);
 			}, this);
 		},

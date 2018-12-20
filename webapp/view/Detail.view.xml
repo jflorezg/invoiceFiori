@@ -16,27 +16,38 @@
 				</headerToolbar>
 				<content>
 					<VBox class="sapUiSmallMargin">
-						<f:SimpleForm id="SimpleFormToolbar" editable="true" layout="ResponsiveGridLayout" labelSpanXL="12" labelSpanL="3" labelSpanM="12"
-							labelSpanS="8" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="8" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
+						<f:SimpleForm
+							id="SimpleFormToolbar"
+							editable="true"
+							layout="ResponsiveGridLayout"
+							adjustLabelSpan="false"
+							labelSpanS="8"
+							labelSpanM="12"
+							labelSpanL="3"
+							labelSpanXL="12"
+							emptySpanS="0"
+							emptySpanM="0"
+							emptySpanL="8"
+							emptySpanXL="0"
+							columnsM="1"
+							columnsXL="2"
+							columnsL="1"
 							singleContainerFullSize="false" ariaLabelledBy="Title1">
 							<f:content>
 								<Label text="Tarifa/Num Horas"/>
 								<ComboBox
 									xmlns="sap.m"
 									id="rateCb"
-									width="45%"
 									placeholder="Tarifa">
 								</ComboBox>
-								<Input value="{Numhoras}" editable="true"  placeholder="Numero de horas"/>
+								<Input value="{Descripcion}" editable="true"  placeholder="Debes poner tu descripción aquí"/>
 								<Label text="Especialidad"/>
 								<ComboBox
 									xmlns="sap.m"
 									id="serviceCb"
-									width="45%"
 									placeholder="Especialidad">
 								</ComboBox>
-								<Label text="Descripción/Tarifa"/>
-								<Input value="{Descripcion}" editable="true"  placeholder="Debes poner tu descripción aquí"/>
+								<Input value="{Numhoras}" editable="true"  placeholder="Numero de horas"/>
 								<Input value="{Tarifa}" editable="true"  placeholder="$"/>
 							</f:content>
 						</f:SimpleForm>
