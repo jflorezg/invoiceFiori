@@ -7,6 +7,7 @@ sap.ui.define([
 	     openFullScreenView: function() { 
 	    	this.getRouter().navTo("fullscreen");	
 	     },
+	     selectedRate: null,
 	     rateData: {},
 	     tableModelObj: {
 	     	requirement: '',
@@ -16,13 +17,7 @@ sap.ui.define([
 	     	service: '',
 	     	total: ''
 	     },
-	     tableModel: {tableModel: [{
-	     	requirement: 'sadf',
-	     	customer: 'asdf',
-	     	hours: 30,
-	     	rate: 15000,
-	     	service: 'asdf',
-	     	total: 'asdf'}]},
+	     tableModel: [],
 	     viewModel: {
 	     	description: '',
 	     	service: '',
@@ -43,8 +38,9 @@ sap.ui.define([
 			this.loadStaticModels();
 			//this.getView().setModel(new sap.ui.model.json.JSONModel(this.viewModel), "tarifa");
 			//this.getView().setModel(new sap.ui.model.json.JSONModel(this.tableModel));
-			this.tableModel.tarifa = this.viewModel;
-			this.getView().setModel(new sap.ui.model.json.JSONModel(this.tableModel));
+			//this.tableModel.tarifa = this.viewModel;
+			this.viewModel.tableModel = this.tableModel;
+			this.getView().setModel(new sap.ui.model.json.JSONModel(this.viewModel));
 		},
 
 		onChangeRate: function(oEvent)
@@ -53,6 +49,7 @@ sap.ui.define([
 			var selectedRate = this.rateData.filter((item) => {
 				return item.id == key;
 			});
+			this.selectedRate = selectedRate;
 			selectedRate = selectedRate[0];
 			this.viewModel.charge = selectedRate.charge;
 			this.viewModel.description = selectedRate.name;
@@ -63,7 +60,15 @@ sap.ui.define([
 
 		onSaveRate: function(oEvent){
 			var totalRate = Object.assign({}, this.tableModelObj);
-			this.tableModel.tableModel.push(totalRate);
+
+			totalRate.requirement = this.navParameters.selectedRequirement[0].key;
+			totalRate.customer = this.navParameters.selectedRequirement[0].fields.project.id;
+			totalRate.hours = this.navParameters.selectedRequirement[0].fields.aggregatetimespent/3600;
+			totalRate.charge = this.selectedRate[0].charge;
+			totalRate.service = this.getView().byId('serviceCb').getSelectedItem().getText();
+			totalRate.total = totalRate.charge * totalRate.hours;
+
+			this.tableModel.push(totalRate);
 			this.getModel().refresh();
 		},
 

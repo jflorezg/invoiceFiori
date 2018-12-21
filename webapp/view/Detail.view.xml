@@ -41,7 +41,7 @@
 									placeholder="Tarifa"
 									change="onChangeRate">
 								</ComboBox>
-								<Input value="{tarifa/description}" editable="true"  placeholder="Debes poner tu descripción aquí"/>
+								<Input value="{/description}" editable="true"  placeholder="Debes poner tu descripción aquí"/>
 								<Label text="Especialidad"/>
 								<ComboBox
 									xmlns="sap.m"
@@ -84,9 +84,9 @@
 							<Text text="{requirement}"/>
 							<Text text="{customer}"/>
 							<Text text="{hours}"/>
-							<Text text="{rate}"/>
+							<Text text="{charge}"/>
 							<Text text="{service}"/>
-							<Text text="{rate} x {hours}"/>
+							<Text text="{total}"/>
 						</ColumnListItem>
 					</Table>
 				</content>
