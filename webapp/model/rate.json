@@ -1,31 +1,27 @@
 { "rate":
 	[{
 		"id": "tar_001",
-		"name": "Argos_abap_JR",
-		"customer": "11000",
+		"name": "Nutresa_abap_JR",
+		"customer": "10807",
 		"service": "esp_001",
-		"hours": "9",
 		"charge": "55000"
 	},{
-		"id": "tar_001",
-		"name": "Argos_abap_SR",
-		"customer": "11000",
-		"service": "esp_001",
-		"hours": "9",
+		"id": "tar_002",
+		"name": "Nutresa_fiori_SR",
+		"customer": "10807",
+		"service": "esp_002",
 		"charge": "150000"
 	},{
-		"id": "tar_001",
-		"name": "Argos_abap_SR",
-		"customer": "25393",
+		"id": "tar_003",
+		"name": "Auteco_abap_JR",
+		"customer": "11300",
 		"service": "esp_001",
-		"hours": "9",
-		"charge": "150000"
+		"charge": "15000"
 	},{
-		"id": "tar_001",
-		"name": "Argos_abap_SR",
-		"customer": "25393",
+		"id": "tar_004",
+		"name": "Auteco_abap_SR",
+		"customer": "11300",
 		"service": "esp_001",
-		"hours": "9",
-		"charge": "150000"
+		"charge": "75000"
 	}]
 }

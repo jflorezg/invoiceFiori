@@ -4,9 +4,31 @@ sap.ui.define([
 	"use strict";
 
 	return Controller.extend("com.perceptio.invoiceperceptio.InvoicePerceptio.controller.Detail", {
-     openFullScreenView: function() { 
-    	this.getRouter().navTo("fullscreen");	
-     },
+	     openFullScreenView: function() { 
+	    	this.getRouter().navTo("fullscreen");	
+	     },
+	     rateData: {},
+	     tableModelObj: {
+	     	requirement: '',
+	     	customer: '',
+	     	hours: '',
+	     	rate: '',
+	     	service: '',
+	     	total: ''
+	     },
+	     tableModel: {tableModel: [{
+	     	requirement: 'sadf',
+	     	customer: 'asdf',
+	     	hours: 30,
+	     	rate: 15000,
+	     	service: 'asdf',
+	     	total: 'asdf'}]},
+	     viewModel: {
+	     	description: '',
+	     	service: '',
+	     	hours: '',
+	     	charge: ''
+	     },
 		/**
 		 * Called when a controller is instantiated and its View controls (if available) are already created.
 		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
@@ -15,12 +37,55 @@ sap.ui.define([
 		onInit: function() {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this); //Get Hold of Router
 			oRouter.getRoute("detail").attachPatternMatched(function(oEvent){
-				console.log(oEvent.getParameter("arguments").requirementObj)
-				this.loadModels(oEvent.getParameter("arguments").requirement);
+				var param = oEvent.getParameter("arguments").requirement;
+				this.loadDynamicModels(this.navParameters.selectedRequirement[0]);
 			}, this);
+			this.loadStaticModels();
+			//this.getView().setModel(new sap.ui.model.json.JSONModel(this.viewModel), "tarifa");
+			//this.getView().setModel(new sap.ui.model.json.JSONModel(this.tableModel));
+			this.tableModel.tarifa = this.viewModel;
+			this.getView().setModel(new sap.ui.model.json.JSONModel(this.tableModel));
 		},
 
-		loadModels: function(requirement) {
+		onChangeRate: function(oEvent)
+		{
+			var key = oEvent.getSource().getSelectedKey();
+			var selectedRate = this.rateData.filter((item) => {
+				return item.id == key;
+			});
+			selectedRate = selectedRate[0];
+			this.viewModel.charge = selectedRate.charge;
+			this.viewModel.description = selectedRate.name;
+			this.getView().byId('serviceCb').setSelectedKey(selectedRate.service);
+			this.viewModel.hours = this.navParameters.selectedRequirement[0].fields.aggregatetimespent/3600;
+			this.getView().getModel().refresh();
+		},
+
+		onSaveRate: function(oEvent){
+			var totalRate = Object.assign({}, this.tableModelObj);
+			this.tableModel.tableModel.push(totalRate);
+			this.getModel().refresh();
+		},
+
+		loadDynamicModels: function(requirement) {
+			var oItemTemplate = new sap.ui.core.ListItem();
+			var comboBox = this.getView().byId("rateCb");
+
+			oItemTemplate.bindProperty("text", "name");
+			oItemTemplate.bindProperty("key", "id");
+
+			comboBox.bindItems("/rate", oItemTemplate);
+			var oModel = new sap.ui.model.json.JSONModel("model/rate.json");
+			oModel.attachRequestCompleted(function(){
+				var oData = oModel.oData.rate.filter((item) => {
+					return item.customer == requirement.fields.project.id;
+				});
+				this.rateData = oData;
+				comboBox.setModel(new sap.ui.model.json.JSONModel({"rate": oData}));
+			}.bind(this));
+		},
+
+		loadStaticModels: function() {
 			var oItemTemplate = new sap.ui.core.ListItem();
 			var comboBox = this.getView().byId("serviceCb");
 
@@ -28,8 +93,8 @@ sap.ui.define([
 			oItemTemplate.bindProperty("key", "id");
 
 			comboBox.bindItems("/service", oItemTemplate);
-			var oData = new sap.ui.model.json.JSONModel("model/service.json");
-			comboBox.setModel(oData);
+			var oModel = new sap.ui.model.json.JSONModel("model/service.json");
+			comboBox.setModel(oModel);
 		},
 
 		onBack: function() {

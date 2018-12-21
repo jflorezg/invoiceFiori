@@ -38,10 +38,9 @@ sap.ui.define([
 			 var selectedObject	= oEvent.getSource().getModel().oData.issues.filter((item) => {
 				return item.id == oEvent.getSource().getNumber();
 			});
-			console.log(selectedObject);
+			this.navParameters.selectedRequirement = selectedObject;
 			this.getRouter().navTo("detail", {
-				requirement: oEvent.getSource().getNumber(),
-				requirementObj : selectedObject
+				requirement: oEvent.getSource().getNumber()
 			});
 		},
 
@@ -62,7 +61,7 @@ sap.ui.define([
 				https://190.248.92.106:64001/rest/api/2/search?jql=project=` + customerItem.getSelectedKey() + `
 					&startAt=0
 					&maxResults=10
-					&fields=issuetype,summary,status,created,timespent,aggregatetimespent,timeoriginalestimate,customfield_11002
+					&fields=project,issuetype,summary,status,created,timespent,aggregatetimespent,timeoriginalestimate,customfield_11002
 			`;
 			$.ajax({
 				type: "GET",

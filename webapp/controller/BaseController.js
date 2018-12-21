@@ -6,6 +6,7 @@ sap.ui.define([
 		"use strict";
 
 		return Controller.extend("com.perceptio.invoiceperceptio.InvoicePerceptio.controller.BaseController", {
+			navParameters: {},
 			/**
 			 * Convenience method for accessing the router in every controller of the application.
 			 * @public
